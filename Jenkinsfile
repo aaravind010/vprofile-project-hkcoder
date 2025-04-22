@@ -71,6 +71,7 @@ pipeline {
     post{
         always{
             sh 'echo "Clean WS"'
+            sh 'ls -altrS'
             cleanWs ()
         }
     }

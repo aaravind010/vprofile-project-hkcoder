@@ -98,8 +98,7 @@ pipeline {
             sh 'ls -altrS'
             sh 'pwd'
             cleanWs ()
-        }
-        always{
+    
             echo 'Slack Notifications.'
             slackSend channel: '#jenkinscicd',
                 color: COLOR_MAP[currentBuild.currentResult],

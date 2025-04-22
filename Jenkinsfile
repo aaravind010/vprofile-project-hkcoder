@@ -18,11 +18,6 @@ pipeline {
     }
 
     stages {
-        stage('Clean up Workspace before Build'){
-            steps{
-                cleanWs()
-            }
-        }
         stage('Build'){
             steps {
                 sh 'mvn -s settings.xml -DskipTests install'
@@ -42,6 +37,11 @@ pipeline {
         stage ('CheckStyle Analysis Test'){
             steps{
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
+            }
+        }
+         stage('Clean up Workspace after Build'){
+            steps{
+                cleanWs()
             }
         }
     }

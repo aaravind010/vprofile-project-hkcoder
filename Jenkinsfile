@@ -18,6 +18,11 @@ pipeline {
     }
 
     stages {
+        stage('Clean up Workspace before Build'){
+            steps{
+                cleanWs()
+            }
+        }
         stage('Build'){
             steps {
                 sh 'mvn -s settings.xml -DskipTests install'

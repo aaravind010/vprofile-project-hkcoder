@@ -23,7 +23,7 @@ pipeline {
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
         registryCredential = 'ecr:us-east-1:awscreds'
-        appregistry = '663400901926.dkr.ecr.us-east-1.amazonaws.com/vpro-app-image'
+        appRegistry = '663400901926.dkr.ecr.us-east-1.amazonaws.com/vpro-app-image'
         vproregiatryurl = 'https://663400901926.dkr.ecr.us-east-1.amazonaws.com'
     }
 
@@ -94,12 +94,14 @@ pipeline {
      )
             }
         }
-        stage ('Build App Image'){
-            steps{
-                scripts{
-                    dockerImage = docker.build( appregistry + ":$BUILD_NUMBER", "./Docker-files/app/multistage/")
-                }
-            }
+        stage('Build App Image') {
+       steps {
+       
+         script {
+                dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "./Docker-files/app/multistage/")
+             }
+
+     }
         }
         stage('Upload App Image') {
           steps{

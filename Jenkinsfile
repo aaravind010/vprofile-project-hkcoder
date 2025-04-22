@@ -72,6 +72,7 @@ pipeline {
         always{
             sh 'echo "Clean WS"'
             sh 'ls -altrS'
+            sh 'pwd'
             cleanWs ()
         }
     }

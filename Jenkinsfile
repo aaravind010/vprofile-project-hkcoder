@@ -27,7 +27,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh 'mvn -s settings.xml -DskipTests install'
+                sh 'mvn-- -s settings.xml -DskipTests install'
             }
             post {
                 success {
@@ -98,7 +98,7 @@ pipeline {
             sh 'ls -altrS'
             sh 'pwd'
             cleanWs ()
-    
+
             echo 'Slack Notifications.'
             slackSend channel: '#jenkinscicd',
                 color: COLOR_MAP[currentBuild.currentResult],
